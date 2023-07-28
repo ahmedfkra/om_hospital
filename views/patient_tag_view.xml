@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Form View-->
+        <record id="view_patient_tag_form" model="ir.ui.view">
+            <field name="name">patient_tag_form</field>
+            <field name="model">patient.tag</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                            <group>
+                                <field name="name"/>
+
+                            </group>
+                            <group>
+                                <field name="color" widget="color_picker"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <!--        Tree View-->
+        <record id="view_patient_tag_tree" model="ir.ui.view">
+            <field name="name">patient_tag_tree</field>
+            <field name="model">patient.tag</field>
+            <field name="arch" type="xml">
+                <tree string="hospital_patient_tag_type_tree" sample="1" multi_edit="1">
+                    <field name="name"/>
+                    <field name="active" widget="boolean_toggle"/>
+                    <field name="color" widget="color_picker" />
+
+                </tree>
+            </field>
+        </record>
+        <!--        Search View-->
+        <record id="view_patient_tag_search" model="ir.ui.view">
+            <field name="name">patient_tag_search</field>
+            <field name="model">patient.tag</field>
+            <field name="arch" type="xml">
+                <search string="patient tag">
+                    <field name="name" string="Tag Name"/>
+                    <field name="active"/>
+                </search>
+            </field>
+        </record>
+        <!--Actions-->
+        <record id="action_patient_tag" model="ir.actions.act_window">
+            <field name="name">Patients Tag</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">patient.tag</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first patient tag !
+                </p>
+            </field>
+
+        </record>
+
+        <menuitem id="menu_patient_tags"
+                  name="Patient tag"
+                  action="action_patient_tag"
+                  parent="menu_patient_configuration"
+                  sequence="0"/>
+
+
+    </data>
+</odoo>
